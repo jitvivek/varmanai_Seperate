@@ -1,0 +1,106 @@
+# =============================================================================
+# Render Blueprint — VarmanAI deployment
+# -----------------------------------------------------------------------------
+# Deploys the VarmanAI monorepo (apps/backend + apps/website) to Render along
+# with a managed PostgreSQL database and a Render Key Value (Redis) instance.
+#
+# This repo is the standalone VarmanAI repository, so the project lives at the
+# repo root (no `rootDir`/`buildFilter` indirection needed).
+#
+# Spec: https://render.com/docs/blueprint-spec
+# =============================================================================
+
+databases:
+  - name: varmanai-db
+    plan: free
+    databaseName: varmanai
+    user: varman
+    postgresMajorVersion: "16"
+    region: singapore
+
+services:
+  # ---------------------------------------------------------------------------
+  # Redis (Render Key Value) — usage counters & rate limiting
+  # ---------------------------------------------------------------------------
+  - type: keyvalue
+    name: varmanai-redis
+    plan: free
+    region: singapore
+    maxmemoryPolicy: noeviction
+    ipAllowList: [] # internal connections only
+
+  # ---------------------------------------------------------------------------
+  # Backend — Express API (apps/backend)
+  # ---------------------------------------------------------------------------
+  - type: web
+    name: varmanai-backend
+    runtime: node
+    plan: free
+    region: singapore
+    healthCheckPath: /v1/health
+    buildCommand: >-
+      corepack enable &&
+      pnpm install --frozen-lockfile &&
+      pnpm --filter @varmanai/backend exec prisma generate &&
+      pnpm exec turbo build --filter=@varmanai/backend
+    preDeployCommand: pnpm --filter @varmanai/backend exec prisma migrate deploy
+    startCommand: pnpm --filter @varmanai/backend start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: varmanai-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: varmanai-redis
+          property: connectionString
+      # Public URL of the website, used for the CORS allowlist.
+      # Set this in the dashboard once the website URL is known
+      # (e.g. https://varmanai-website.onrender.com).
+      - key: FRONTEND_URL
+        sync: false
+      # Secrets — provide values during Blueprint creation.
+      - key: CLERK_SECRET_KEY
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: RAZORPAY_WEBHOOK_SECRET
+        sync: false
+
+  # ---------------------------------------------------------------------------
+  # Website — Next.js marketing + dashboard (apps/website)
+  # ---------------------------------------------------------------------------
+  - type: web
+    name: varmanai-website
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: >-
+      corepack enable &&
+      pnpm install --frozen-lockfile &&
+      pnpm exec turbo build --filter=@varmanai/website
+    startCommand: pnpm --filter @varmanai/website start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Public URL of the backend API, consumed by the browser at build time.
+      # Set once the backend URL is known (e.g. https://varmanai-backend.onrender.com).
+      - key: NEXT_PUBLIC_API_URL
+        sync: false
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
+      - key: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+        sync: false
+      - key: CLERK_SECRET_KEY
+        sync: false
+      - key: NEXT_PUBLIC_RAZORPAY_KEY_ID
+        sync: false
+      - key: NEXT_PUBLIC_CHROME_STORE_URL
+        value: https://chrome.google.com/webstore/detail/PLACEHOLDER
+      - key: NEXT_PUBLIC_EDGE_STORE_URL
+        value: https://microsoftedge.microsoft.com/addons/detail/PLACEHOLDER

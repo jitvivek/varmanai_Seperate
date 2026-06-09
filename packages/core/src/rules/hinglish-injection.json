@@ -1,0 +1,32 @@
+{
+  "name": "Hinglish Injection",
+  "category": "hinglish-injection",
+  "language": "hi-en",
+  "patterns": [
+    {"id": "hg-001", "pattern": "sabhi\\s+pichle\\s+(nirdesh|instructions|rules)\\s+(ignore|bhool|hatao)", "severity": 0.95, "description": "Hinglish: ignore all previous instructions"},
+    {"id": "hg-002", "pattern": "apna\\s+system\\s+prompt\\s+(batao|dikhao|reveal)", "severity": 0.9, "description": "Hinglish: reveal your system prompt"},
+    {"id": "hg-003", "pattern": "ab\\s+se\\s+tum\\s+(bina|without)\\s+(rules|restrictions|niyam)", "severity": 0.85, "description": "Hinglish: from now without rules"},
+    {"id": "hg-004", "pattern": "mujhe\\s+(bomb|hathiyar|weapon|gun)\\s+(banana|banane|kaise\\s+bana)", "severity": 0.95, "description": "Hinglish: teach me to make weapons"},
+    {"id": "hg-005", "pattern": "drugs\\s+(kaise|kidhar|kahan)\\s+(milega|milenge|banao|banta)", "severity": 0.9, "description": "Hinglish: where/how to get drugs"},
+    {"id": "hg-006", "pattern": "(kisi\\s+ko|someone\\s+ko)\\s+(marna|maarna|kill\\s+karna)", "severity": 0.95, "description": "Hinglish: kill someone"},
+    {"id": "hg-007", "pattern": "safety\\s+(hatao|band\\s+karo|disable\\s+karo)", "severity": 0.9, "description": "Hinglish: disable/remove safety"},
+    {"id": "hg-008", "pattern": "tum\\s+(ek|ab)\\s+(evil|bura|khatarnak)\\s+(AI|bot|assistant)\\s+ho", "severity": 0.85, "description": "Hinglish: you are an evil AI"},
+    {"id": "hg-009", "pattern": "mere\\s+(aadhaar|aadhar|pan|upi)\\s+(number|id|card)", "severity": 0.6, "description": "Hinglish: my aadhaar/PAN/UPI (context-based)"},
+    {"id": "hg-010", "pattern": "hack\\s+karna\\s+(sikhao|batao|kaise)", "severity": 0.8, "description": "Hinglish: teach hacking"},
+    {"id": "hg-011", "pattern": "password\\s+(chura|crack|tod|hack)\\s*(na|o|lo)", "severity": 0.8, "description": "Hinglish: steal/crack password"},
+    {"id": "hg-012", "pattern": "paise\\s+(churana|lootna|thagna)\\s+(kaise|sikhao)", "severity": 0.85, "description": "Hinglish: how to steal/loot money"},
+    {"id": "hg-013", "pattern": "fake\\s+(id|identity|document|passport)\\s+(banana|kaise\\s+bana)", "severity": 0.85, "description": "Hinglish: make fake ID/documents"},
+    {"id": "hg-014", "pattern": "suicide\\s+(kaise|tarika|method|karna)", "severity": 0.95, "description": "Hinglish: suicide methods"},
+    {"id": "hg-015", "pattern": "self[\\s-]?harm\\s+(kaise|tarika|karna)", "severity": 0.95, "description": "Hinglish: self-harm methods"},
+    {"id": "hg-016", "pattern": "terrorist\\s+(attack|hamla)\\s+(plan|kaise)", "severity": 0.95, "description": "Hinglish: plan terrorist attack"},
+    {"id": "hg-017", "pattern": "filter\\s+(bypass|hatao|tod|circumvent)\\s*(karo|karna|na)?", "severity": 0.85, "description": "Hinglish: bypass filter"},
+    {"id": "hg-018", "pattern": "restriction\\s+(hatao|tod|bypass|remove)\\s*(karo|karna)?", "severity": 0.85, "description": "Hinglish: remove restriction"},
+    {"id": "hg-019", "pattern": "unfiltered\\s+(mode|response|jawab)\\s+(do|dena|de)", "severity": 0.85, "description": "Hinglish: give unfiltered response"},
+    {"id": "hg-020", "pattern": "bina\\s+(censorship|filter|rokawat)\\s+(bolo|batao|likho)", "severity": 0.85, "description": "Hinglish: speak without censorship"},
+    {"id": "hg-021", "pattern": "DAN\\s+mode\\s+(chalu|activate|on)\\s*karo", "severity": 0.9, "description": "Hinglish: activate DAN mode"},
+    {"id": "hg-022", "pattern": "(jailbreak|jail\\s+break)\\s+(karo|karna|kar\\s+do)", "severity": 0.9, "description": "Hinglish: jailbreak command"},
+    {"id": "hg-023", "pattern": "dark\\s+web\\s+(access|kaise|jaana)", "severity": 0.7, "description": "Hinglish: dark web access"},
+    {"id": "hg-024", "pattern": "credit\\s+card\\s+(fraud|chori|clone|hack)\\s*(karna|kaise)?", "severity": 0.85, "description": "Hinglish: credit card fraud"},
+    {"id": "hg-025", "pattern": "kisiki\\s+(identity|pehchan)\\s+(chori|chura|steal)\\s*(karna|kaise)?", "severity": 0.85, "description": "Hinglish: identity theft"}
+  ]
+}

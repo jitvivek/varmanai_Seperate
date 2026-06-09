@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String              @id
+  email              String              @unique
+  plan               String              @default("free")
+  planExpiresAt      DateTime?
+  razorpayCustomerId String?
+  seats              Int                 @default(1)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  scanLogs           ScanLog[]
+  subscriptions      Subscription[]
+  extensionInstalls  ExtensionInstall[]
+  apiKeys            ApiKey[]
+}
+
+model ApiKey {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  key       String    @unique
+  name      String    @default("Default")
+  lastUsedAt DateTime?
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([key])
+  @@index([userId])
+}
+
+model ExtensionInstall {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id])
+  extensionId    String?
+  browser        String   @default("chrome")
+  version        String   @default("1.0.0")
+  lastActiveAt   DateTime @default(now())
+  installedAt    DateTime @default(now())
+
+  @@unique([userId, browser])
+  @@index([userId])
+}
+
+model ScanLog {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  textHash     String
+  inputLength  Int
+  site         String?
+  verdict      String
+  riskScore    Float
+  category     String?
+  language     String   @default("en")
+  piiCount     Int      @default(0)
+  matchedRules Json
+  latencyMs    Int
+  createdAt    DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([verdict, createdAt])
+}
+
+model Subscription {
+  id                String    @id @default(uuid())
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+  plan              String
+  billing           String
+  razorpayOrderId   String    @unique
+  razorpayPaymentId String?
+  status            String
+  amount            Int
+  startedAt         DateTime?
+  expiresAt         DateTime?
+  createdAt         DateTime  @default(now())
+
+  @@index([userId, status])
+}

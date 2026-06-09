@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+.next/
+out/
+build/
+
+# Turbo
+.turbo/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Prisma
+# NOTE: migrations are intentionally committed so Render's
+# `prisma migrate deploy` can apply them during deployment.
+
+# Testing
+coverage/
+
+# Logs
+*.log
+pino-pretty.log
+
+# Docker
+pgdata/
+redisdata/

@@ -1,0 +1,22 @@
+{
+  "name": "Tamil Injection",
+  "category": "tamil-injection",
+  "language": "ta",
+  "patterns": [
+    {"id": "ta-001", "pattern": "\u0BAE\u0BC1\u0BA8\u0BCD\u0BA4\u0BC8\u0BAF\\s*\u0B85\u0BB1\u0BBF\u0BB5\u0BC1\u0BB0\u0BC8\u0B95\u0BB3\u0BCD.*\u0BAE\u0BB1", "severity": 0.95, "description": "Tamil: forget previous instructions"},
+    {"id": "ta-002", "pattern": "\u0BAA\u0BBE\u0BA4\u0BC1\u0B95\u0BBE\u0BAA\u0BCD\u0BAA\u0BC1\\s*\u0BB5\u0BBF\u0BA4\u0BBF\u0B95\u0BB3\u0BCD.*\u0BA8\u0BC0\u0B95\u0BCD\u0B95", "severity": 0.9, "description": "Tamil: remove safety rules"},
+    {"id": "ta-003", "pattern": "\u0B95\u0BC1\u0BA3\u0BCD\u0B9F\u0BC1\\s*(\u0B89\u0BB0\u0BC1\u0BB5\u0BBE\u0B95\u0BCD\u0B95|\u0B8E\u0BAA\u0BCD\u0BAA\u0B9F\u0BBF)\\s*\u0B9A\u0BC6\u0BAF\u0BCD", "severity": 0.95, "description": "Tamil: how to make a bomb"},
+    {"id": "ta-004", "pattern": "\u0B95\u0BCA\u0BB2\u0BCD\u0BB2\\s*(\u0B8E\u0BAA\u0BCD\u0BAA\u0B9F\u0BBF|\u0BB5\u0BBF\u0BA4\u0BAE\u0BCD)", "severity": 0.95, "description": "Tamil: how to kill"},
+    {"id": "ta-005", "pattern": "\u0BA4\u0BB1\u0BCD\u0B95\u0BCA\u0BB2\u0BC8\\s*(\u0B8E\u0BAA\u0BCD\u0BAA\u0B9F\u0BBF|\u0BA4\u0BBF\u0B9F\u0BCD\u0B9F\u0BAE\u0BCD)", "severity": 0.95, "description": "Tamil: suicide method/plan"},
+    {"id": "ta-006", "pattern": "\u0BAE\u0BC1\u0BA8\u0BCD\u0BA4\u0BC8\u0BAF\\s*\u0BB5\u0BBF\u0BA4\u0BBF\u0B95\u0BB3\u0BCD\\s*\u0BAA\u0BC1\u0BB0\u0B95\u0BCD\u0B95\u0BA3\u0BBF", "severity": 0.9, "description": "Tamil: ignore previous rules"},
+    {"id": "ta-007", "pattern": "system\\s*prompt\\s*(\u0B95\u0BBE\u0B9F\u0BCD\u0B9F\u0BC1|\u0B9A\u0BCA\u0BB2\u0BCD\u0BB2\u0BC1)", "severity": 0.9, "description": "Tamil: show/tell system prompt"},
+    {"id": "ta-008", "pattern": "\u0BB5\u0BBF\u0BB7\u0BAE\u0BCD\\s*(\u0B9A\u0BC6\u0BAF\u0BCD|\u0B95\u0BCA\u0B9F\u0BC1|recipe)", "severity": 0.95, "description": "Tamil: make/give poison"},
+    {"id": "ta-009", "pattern": "\u0B86\u0BAF\u0BC1\u0BA4\u0BAE\u0BCD\\s*(\u0B8E\u0BAA\u0BCD\u0BAA\u0B9F\u0BBF|\u0B8E\u0B99\u0BCD\u0B95\u0BC7)", "severity": 0.9, "description": "Tamil: weapons how/where"},
+    {"id": "ta-010", "pattern": "\u0BAA\u0BA3\u0BAE\u0BCD\\s*(\u0BA4\u0BBF\u0BB0\u0BC1\u0B9F|\u0B95\u0BB3\u0BB5\u0BC1)", "severity": 0.85, "description": "Tamil: steal money"},
+    {"id": "ta-011", "pattern": "\u0BAE\u0BA4\u0BC1\u0BAA\u0BCA\u0BB0\u0BC1\u0BB3\u0BCD\\s*(\u0B8E\u0BAA\u0BCD\u0BAA\u0B9F\u0BBF|\u0BA4\u0BAF\u0BBE\u0BB0\u0BBF)", "severity": 0.95, "description": "Tamil: how to make drugs"},
+    {"id": "ta-012", "pattern": "hack\\s*(\u0B8E\u0BAA\u0BCD\u0BAA\u0B9F\u0BBF|\u0B95\u0BB1\u0BCD\u0BB1\u0BC1\u0B95\u0BCD\u0B95\u0BCA\u0B9F\u0BC1)", "severity": 0.8, "description": "Tamil: how to hack / teach hacking"},
+    {"id": "ta-013", "pattern": "\u0B95\u0B9F\u0BCD\u0B9F\u0BC1\u0BAA\u0BCD\u0BAA\u0BBE\u0B9F\u0BC1\u0B95\u0BB3\u0BCD\\s*\u0B87\u0BB2\u0BCD\u0BB2\u0BBE\u0BAE\u0BB2\u0BCD", "severity": 0.85, "description": "Tamil: without restrictions"},
+    {"id": "ta-014", "pattern": "\u0BAE\u0BB1\u0BC8\u0BAE\u0BC1\u0B95\u0BAE\u0BCD\\s*(\u0B9A\u0BC6\u0BAF\u0BCD|\u0B89\u0BB0\u0BC1\u0BB5\u0BBE\u0B95\u0BCD\u0B95)", "severity": 0.95, "description": "Tamil: make explosives"},
+    {"id": "ta-015", "pattern": "\u0BAA\u0BAF\u0B99\u0BCD\u0B95\u0BB0\u0BB5\u0BBE\u0BA4\u0BAE\u0BCD\\s*(\u0BA4\u0BBF\u0B9F\u0BCD\u0B9F\u0BAE\u0BCD|\u0B8E\u0BAA\u0BCD\u0BAA\u0B9F\u0BBF)", "severity": 0.95, "description": "Tamil: terrorism plan/how"}
+  ]
+}

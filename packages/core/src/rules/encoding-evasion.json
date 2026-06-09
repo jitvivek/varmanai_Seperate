@@ -1,0 +1,29 @@
+{
+  "name": "Encoding Evasion",
+  "category": "encoding-evasion",
+  "language": "en",
+  "patterns": [
+    {"id": "ee-001", "pattern": "base64[:\\s]+[A-Za-z0-9+/]{20,}={0,2}", "severity": 0.7, "description": "Base64 encoded payload"},
+    {"id": "ee-002", "pattern": "hex[:\\s]+[0-9a-fA-F]{16,}", "severity": 0.7, "description": "Hex encoded payload"},
+    {"id": "ee-003", "pattern": "rot13[:\\s]", "severity": 0.6, "description": "ROT13 encoding reference"},
+    {"id": "ee-004", "pattern": "decode\\s+(this|the\\s+following|below)", "severity": 0.5, "description": "Decode instruction"},
+    {"id": "ee-005", "pattern": "encoded\\s+(message|instructions|payload|text)", "severity": 0.6, "description": "Encoded content reference"},
+    {"id": "ee-006", "pattern": "translate\\s+(from|this)\\s+(binary|hex|octal|base64)", "severity": 0.6, "description": "Encoding translation request"},
+    {"id": "ee-007", "pattern": "\\\\x[0-9a-fA-F]{2}(\\\\x[0-9a-fA-F]{2}){3,}", "severity": 0.7, "description": "Hex escape sequence chain"},
+    {"id": "ee-008", "pattern": "\\\\u[0-9a-fA-F]{4}(\\\\u[0-9a-fA-F]{4}){3,}", "severity": 0.7, "description": "Unicode escape sequence chain"},
+    {"id": "ee-009", "pattern": "char\\s*\\(\\s*\\d{2,3}\\s*\\)", "severity": 0.6, "description": "Char code injection"},
+    {"id": "ee-010", "pattern": "String\\.fromCharCode", "severity": 0.7, "description": "JavaScript char code construction"},
+    {"id": "ee-011", "pattern": "atob\\s*\\(|btoa\\s*\\(", "severity": 0.6, "description": "JavaScript base64 functions"},
+    {"id": "ee-012", "pattern": "read\\s+(backwards|in\\s+reverse|right\\s+to\\s+left)", "severity": 0.6, "description": "Reverse reading instruction"},
+    {"id": "ee-013", "pattern": "first\\s+letter\\s+of\\s+each\\s+(word|line|sentence)", "severity": 0.5, "description": "Acrostic encoding"},
+    {"id": "ee-014", "pattern": "pig\\s*latin", "severity": 0.4, "description": "Pig Latin encoding"},
+    {"id": "ee-015", "pattern": "caesar\\s*(cipher|shift|code)", "severity": 0.5, "description": "Caesar cipher reference"},
+    {"id": "ee-016", "pattern": "morse\\s+code", "severity": 0.4, "description": "Morse code encoding"},
+    {"id": "ee-017", "pattern": "[.-]{5,}\\s+[.-]{5,}", "severity": 0.5, "description": "Morse code pattern"},
+    {"id": "ee-018", "pattern": "binary[:\\s]+[01]{8,}", "severity": 0.6, "description": "Binary encoded payload"},
+    {"id": "ee-019", "pattern": "unicode\\s*(point|code|char|escape)", "severity": 0.5, "description": "Unicode manipulation reference"},
+    {"id": "ee-020", "pattern": "zero[\\s-]?width\\s*(space|char|joiner|non-joiner)", "severity": 0.7, "description": "Zero-width character reference"},
+    {"id": "ee-021", "pattern": "invisible\\s+(character|text|unicode|space)", "severity": 0.6, "description": "Invisible character reference"},
+    {"id": "ee-022", "pattern": "homoglyph|lookalike\\s+char", "severity": 0.6, "description": "Homoglyph attack reference"}
+  ]
+}

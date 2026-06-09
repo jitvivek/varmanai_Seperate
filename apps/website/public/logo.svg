@@ -1,0 +1,12 @@
+<svg width="200" height="64" viewBox="0 0 200 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield mark -->
+  <path d="M32 4L58 18V46L32 60L6 46V18L32 4Z" stroke="#22D3EE" stroke-width="2.5" fill="none"/>
+  <!-- V checkmark -->
+  <path d="M20 34L28 42L44 22" stroke="#F5B544" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Circuit nodes -->
+  <circle cx="32" cy="12" r="2" fill="#22D3EE" opacity="0.5"/>
+  <circle cx="50" cy="22" r="1.5" fill="#22D3EE" opacity="0.4"/>
+  <circle cx="14" cy="22" r="1.5" fill="#22D3EE" opacity="0.4"/>
+  <!-- Wordmark -->
+  <text x="70" y="40" font-family="Sora, sans-serif" font-weight="700" font-size="22" fill="#E2E8F5">VarmanAI</text>
+</svg>

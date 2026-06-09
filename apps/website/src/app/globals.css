@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --varman-ink: #0A1330;
+  --varman-ink-2: #111C44;
+  --varman-steel: #1E2A52;
+  --varman-cyan: #22D3EE;
+  --varman-cyan-deep: #0891B2;
+  --varman-gold: #F5B544;
+  --varman-safe: #34D399;
+  --varman-warn: #FBBF24;
+  --varman-danger: #F43F5E;
+  --varman-mist: #E2E8F5;
+  --varman-fog: #8B98C9;
+  --varman-paper: #F8FAFC;
+  --varman-slate: #334155;
+}
+
+body {
+  font-family: var(--font-plus-jakarta), sans-serif;
+  background: var(--varman-ink);
+  color: var(--varman-mist);
+}
+
+@layer utilities {
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, var(--varman-cyan), var(--varman-cyan-deep));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-dark {
+    background: linear-gradient(180deg, var(--varman-ink) 0%, var(--varman-ink-2) 100%);
+  }
+
+  .animate-scan-line {
+    animation: scanLine 3s ease-in-out infinite;
+  }
+}
+
+@keyframes scanLine {
+  0%, 100% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
