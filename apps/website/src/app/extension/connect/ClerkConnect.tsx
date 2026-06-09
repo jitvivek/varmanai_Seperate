@@ -1,6 +1,7 @@
 'use client';
 
-import { useAuth, SignedIn, SignedOut, SignIn } from '@clerk/nextjs';
+import { useAuth, useUser } from '@clerk/nextjs';
+import { SignIn } from '@clerk/nextjs';
 import ConnectPanel from './ConnectPanel';
 
 /**
@@ -10,22 +11,19 @@ import ConnectPanel from './ConnectPanel';
  */
 export default function ClerkConnect() {
   const { getToken } = useAuth();
+  const { user } = useUser();
 
-  return (
-    <>
-      <SignedOut>
-        <div className="text-center">
-          <h1 className="mb-2 font-display text-2xl text-varman-mist">Connect your extension</h1>
-          <p className="mb-6 text-sm text-varman-fog">
-            Sign in with email or Google to link the VarmanAI extension to your account.
-          </p>
-          <SignIn routing="hash" />
-        </div>
-      </SignedOut>
+  if (!user) {
+    return (
+      <div className="text-center">
+        <h1 className="mb-2 font-display text-2xl text-varman-mist">Connect your extension</h1>
+        <p className="mb-6 text-sm text-varman-fog">
+          Sign in with email or Google to link the VarmanAI extension to your account.
+        </p>
+        <SignIn routing="hash" />
+      </div>
+    );
+  }
 
-      <SignedIn>
-        <ConnectPanel getToken={() => getToken()} />
-      </SignedIn>
-    </>
-  );
+  return <ConnectPanel getToken={() => getToken()} />;
 }
